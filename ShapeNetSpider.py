@@ -51,7 +51,7 @@ url = "https://www.shapenet.org/solr/models3d/select?q={item}&wt=json&sort=&star
 while True:
     search_item = input("please input the search item:\n")
     html = request.urlopen(url.format(item=search_item))
-    response = json.load(html)
+    response = json.loads(html.read().decode("utf-8"))
     numFound = response.get("response").get("numFound")
     if numFound is 0:
         print("no result found")
